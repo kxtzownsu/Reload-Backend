@@ -95,22 +95,23 @@ Created by [Burlone](https://github.com/burlone0), This is a modded backend, all
 - `/removeitem {user} {cosmeticname}` - Allows you to remove a cosmetic (skin, pickaxe, glider, etc.) from a user
 - `/unban {targetUsername}` - Unban a user from the backend by their username.
 ### How to set up moderators?
-1) Go to **Config/config.json** in the directory you extracted Reload Backend into.
-2) Open it, you should see a **"moderators"** section in the file.
-3) You have to get your discord id and replace discordId with it.
-4) You can set multiple moderators like this `["discordId","discordId2"]`.
+1) Go to **.env** in the directory you extracted Reload Backend into.
+2) Open it, you should see a **MODERATORS** line in the file.
+3) You have to get your discord id and replace `discordId` with it.
+4) You can set multiple moderators like this `MODERATORS=discordId,discordId2`.
+
 ### How to setup multiple gameservers
-1) Go to **Config/config.json** in the directory you extracted Reload Backend into.
-2) Open it, you should see a **"gameServerIP"** section in the file.
-3) To add more gameservers you will have to do it like this `"gameServerIP": ["127.0.0.1:7777:playlist_defaultsolo", "127.0.0.1:7777:playlist_defaultduo"],`
-4) You have now added solos and duos to your matchmaking 
+1) Go to **.env** in the directory you extracted Reload Backend into.
+2) Open it, you should see a **GAME_SERVER_IP** line in the file.
+3) To add more gameservers you will have to do it like this `GAME_SERVER_IP=127.0.0.1:7777:playlist_defaultsolo,127.0.0.1:7777:playlist_defaultduo`
+4) You have now added solos and duos to your matchmaking
 
 ## How to start Reload Backend
 1) Install [NodeJS](https://nodejs.org/en/) and [MongoDB](https://www.mongodb.com/try/download/community).
 2) **Download** and **Extract** Reload Backend to a safe location.
 3) Run **"install_packages.bat"** to install all the required modules.
-4) Go to **Config/config.json** in the directory you extracted Reload Backend into.
-5) Open it, set your discord bot token **(DO NOT SHARE THIS TOKEN)** and **save it**. The discord bot will be used for creating accounts and managing your account (You can disable the discord bot by entering "bUseDiscordBot" to false in "Config/config.json").
+4) Copy **.env.example** to **.env** in the directory you extracted Reload Backend into.
+5) Open it, set your discord bot token **(DO NOT SHARE THIS TOKEN)** in `DISCORD_BOT_TOKEN` and **save it**. The discord bot will be used for creating accounts and managing your account (You can disable the discord bot by setting `DISCORD_USE_BOT=false` in `.env`).
 6) Run **"start.bat"**, if there is no errors, it should work.
 7) Use something to redirect the Fortnite servers to **localhost:8080** (Which could be fiddler, ssl bypass that redirects servers, etc...)
 8) When Fortnite launches and is connected to the backend, enter your email and password (or launch with an exchange code) then press login. It should let you in and everything should be working fine.

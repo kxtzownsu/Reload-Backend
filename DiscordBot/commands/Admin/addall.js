@@ -5,7 +5,7 @@ const Users = require('../../../model/user.js');
 const Profiles = require('../../../model/profiles.js');
 const log = require("../../../structs/log.js");
 const destr = require("destr");
-const config = require('../../../Config/config.json')
+const config = require('../../../Config/config.js')
 
 module.exports = {
     commandInfo: {

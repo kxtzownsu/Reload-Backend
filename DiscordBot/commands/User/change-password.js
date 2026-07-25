@@ -1,7 +1,7 @@
-const { MessageEmbed } = require("discord.js");
+const MessageEmbed = require("discord.js");
 const User = require("../../../model/user.js");
-const bcrypt = require("bcrypt");
 const functions = require("../../../structs/functions.js");
+const bcrypt = require("bcryptjs");
 
 module.exports = {
     commandInfo: {

@@ -1,17 +1,17 @@
-const { Client, Intents, MessageEmbed } = require("discord.js");
-const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_MEMBERS, Intents.FLAGS.GUILD_BANS] });
+const { Client, GatewayIntentBits, Partials, MessageEmbed } = require("discord.js");
+const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.GuildMembers, GatewayIntentBits.GuildBans] });
 const fs = require("fs");
 const path = require("path");
-const config = JSON.parse(fs.readFileSync("./Config/config.json").toString());
+const config = require('../Config/config.js');
 const log = require("../structs/log.js");
 const Users = require("../model/user.js");
 
-client.once("ready", () => {
+client.once("clientReady", () => {
     log.bot("Bot is up and running!");
 
     if (config.bEnableBackendStatus) {
         if (!config.bBackendStatusChannelId || config.bBackendStatusChannelId.trim() === "") {
-            log.error("The channel ID has not been set in config.json for bEnableBackendStatus.");
+            log.error("BACKEND_STATUS_CHANNEL_ID has not been set in .env for ENABLE_BACKEND_STATUS.");
         } else {
             const channel = client.channels.cache.get(config.bBackendStatusChannelId);
             if (!channel) {

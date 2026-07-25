@@ -1,7 +1,7 @@
 const MMCodes = require("../../../model/mmcodes.js");
 const { MessageEmbed } = require("discord.js");
 const log = require("../../../structs/log.js");
-const config = require('../../../Config/config.json')
+const config = require('../../../Config/config.js')
 
 module.exports = {
     commandInfo: {
