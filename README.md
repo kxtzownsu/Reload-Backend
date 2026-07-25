@@ -64,8 +64,6 @@ Created by [Burlone](https://github.com/burlone0), This is a modded backend, all
 - [ ] Create a support with save the world
 - [ ] Create a support with creative
 
-> **Note:** `.env` is an override file, not a full config. Only put the configuration values you want to change in there. `.env.example` & `Config/config.js` already specify all of the default options.
-
 ## Discord Bot Commands
 ### User Commands:
 - `/create {email} {username} {password}` - Creates an account on the backend (You can only create 1 account).
@@ -96,6 +94,9 @@ Created by [Burlone](https://github.com/burlone0), This is a modded backend, all
 - `/removevbucks {user} {vbucks}` - Lets you change a users amount of vbucks
 - `/removeitem {user} {cosmeticname}` - Allows you to remove a cosmetic (skin, pickaxe, glider, etc.) from a user
 - `/unban {targetUsername}` - Unban a user from the backend by their username.
+
+>[!IMPORTANT]
+>**Note:** `.env` is an override file, not a full config. Only put the configuration values you want to change in there. `.env.example` & `Config/config.js` already specify all of the default options.
 
 ### How to set up moderators?
 1) Go to/Create **.env** in the directory you extracted Reload Backend into.
