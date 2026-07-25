@@ -64,6 +64,8 @@ Created by [Burlone](https://github.com/burlone0), This is a modded backend, all
 - [ ] Create a support with save the world
 - [ ] Create a support with creative
 
+> **Note:** `.env` is an override file, not a full config. Only put the configuration values you want to change in there. `.env.example` & `Config/config.js` already specify all of the default options.
+
 ## Discord Bot Commands
 ### User Commands:
 - `/create {email} {username} {password}` - Creates an account on the backend (You can only create 1 account).
@@ -94,11 +96,13 @@ Created by [Burlone](https://github.com/burlone0), This is a modded backend, all
 - `/removevbucks {user} {vbucks}` - Lets you change a users amount of vbucks
 - `/removeitem {user} {cosmeticname}` - Allows you to remove a cosmetic (skin, pickaxe, glider, etc.) from a user
 - `/unban {targetUsername}` - Unban a user from the backend by their username.
+
 ### How to set up moderators?
-1) Go to **.env** in the directory you extracted Reload Backend into.
-2) Open it, you should see a **MODERATORS** line in the file.
-3) You have to get your discord id and replace `discordId` with it.
-4) You can set multiple moderators like this `MODERATORS=discordId,discordId2`.
+1) Go to/Create **.env** in the directory you extracted Reload Backend into.
+2) Open it, it will either be blank or have your custom config if you already added some config options.
+3) Get your moderator's discord IDs
+4) Add them to the file like this `MODERATORS=discordId,discordId2`.
+<sub>P.S: you can add only one moderator, or multiple, if you want. They must all however be on the same line. You cannot have multiple `MODERATORS` lines.</sub>
 
 ### How to setup multiple gameservers
 1) Go to **.env** in the directory you extracted Reload Backend into.
@@ -106,12 +110,19 @@ Created by [Burlone](https://github.com/burlone0), This is a modded backend, all
 3) To add more gameservers you will have to do it like this `GAME_SERVER_IP=127.0.0.1:7777:playlist_defaultsolo,127.0.0.1:7777:playlist_defaultduo`
 4) You have now added solos and duos to your matchmaking
 
+### How to set up the Discord bot
+1) Go to/Create **.env** in the directory you extracted Reload Backend into.
+2) Open it, it will either be blank or have your custom config if you already added some config options.
+3) Get your Discord bot token from the [Discord Developer Portal](https://discord.com/developers/applications) **(DO NOT SHARE THIS TOKEN)**.
+4) Add it to the file like this `DISCORD_BOT_TOKEN=your-bot-token-here`.
+<sub>P.S: if you don't want the Discord bot to run at all, set `DISCORD_USE_BOT=false` instead, and you can skip getting a token.</sub>
+
 ## How to start Reload Backend
 1) Install [NodeJS](https://nodejs.org/en/) and [MongoDB](https://www.mongodb.com/try/download/community).
 2) **Download** and **Extract** Reload Backend to a safe location.
 3) Run **"install_packages.bat"** to install all the required modules.
-4) Copy **.env.example** to **.env** in the directory you extracted Reload Backend into.
-5) Open it, set your discord bot token **(DO NOT SHARE THIS TOKEN)** in `DISCORD_BOT_TOKEN` and **save it**. The discord bot will be used for creating accounts and managing your account (You can disable the discord bot by setting `DISCORD_USE_BOT=false` in `.env`).
+4) Go to/Create **.env** in the directory you extracted Reload Backend into. This file only needs the options you want to change from default, not every value found in `.env.example`.
+5) Set up the Discord bot (see [How to set up the Discord bot](#how-to-set-up-the-discord-bot)), or set `DISCORD_USE_BOT=false` if you don't want to use it.
 6) Run **"start.bat"**, if there is no errors, it should work.
 7) Use something to redirect the Fortnite servers to **localhost:8080** (Which could be fiddler, ssl bypass that redirects servers, etc...)
 8) When Fortnite launches and is connected to the backend, enter your email and password (or launch with an exchange code) then press login. It should let you in and everything should be working fine.
