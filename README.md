@@ -118,15 +118,33 @@ Created by [Burlone](https://github.com/burlone0), This is a modded backend, all
 4) Add it to the file like this `DISCORD_BOT_TOKEN=your-bot-token-here`.
 <sub>P.S: if you don't want the Discord bot to run at all, set `DISCORD_USE_BOT=false` instead, and you can skip getting a token.</sub>
 
-## How to start Reload Backend
+>[!IMPORTANT]
+>It is recommended, but not required, that you run your backend on the same machine you play Fortnite on.
+>If you are trying to host multiple people, it is recommeneded to use a VPS and Linux, but it is not required to use Linux. Depending on the provider, a VPS can also run Windows if you do not want to use Linux.
+
+## How to start Reload Backend on Windows
 1) Install [NodeJS](https://nodejs.org/en/) and [MongoDB](https://www.mongodb.com/try/download/community).
 2) **Download** and **Extract** Reload Backend to a safe location.
 3) Run **"install_packages.bat"** to install all the required modules.
 4) Go to/Create **.env** in the directory you extracted Reload Backend into. This file only needs the options you want to change from default, not every value found in `.env.example`.
 5) Set up the Discord bot (see [How to set up the Discord bot](#how-to-set-up-the-discord-bot)), or set `DISCORD_USE_BOT=false` if you don't want to use it.
 6) Run **"start.bat"**, if there is no errors, it should work.
-7) Use something to redirect the Fortnite servers to **localhost:8080** (Which could be fiddler, ssl bypass that redirects servers, etc...)
+7) Use something to redirect the Fortnite servers to **localhost:3551** or whatever IP your backend is running on (Which could be fiddler, ssl bypass that redirects servers, etc...)
 8) When Fortnite launches and is connected to the backend, enter your email and password (or launch with an exchange code) then press login. It should let you in and everything should be working fine.
+
+## How to start Reload Backend on Linux
+>[!IMPORTANT]
+>Fortnite is natively ran on Windows. At the time of writing this, there is no way to play Fortnite on Linux.
+>This is only if you do not want to host your backend on a Windows machine.
+1) Install [NodeJS](https://nodejs.org/en/), [MongoDB](https://www.mongodb.com/try/download/community) and `git`.
+2) In your home directory, or any other directory that you wish, run this command: `git clone https://github.com/Project-Reload/Reload-Backend`
+3) Then, do `cd Reload-Backend` to enter the directory.
+4) Run `npm i` (this will also work with `pnpm` if you prefer that)
+5) Go to/Create **.env** in the directory you extracted Reload Backend into. This file only needs the options you want to change from default, not every value found in `.env.example`.
+6) Set up the Discord bot (see [How to set up the Discord bot](#how-to-set-up-the-discord-bot)), or set `DISCORD_USE_BOT=false` if you don't want to use it.
+7) Run `npm start` to start the backend (again, thiswill also work with `pnpm`)
+8) Use something to redirect the Fortnite servers to **<your linux machines IP>:3551** or whatever port you specified in `.env` (Which could be fiddler, ssl bypass that redirects servers, etc...)
+9) When Fortnite launches and is connected to the backend, enter your email and password (or launch with an exchange code) then press login. It should let you in and everything should be working fine.
 
 ## Caldera Service
 Recreates a service that is used for the startup of newer Fortnite builds.
