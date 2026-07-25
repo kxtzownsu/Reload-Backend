@@ -6,8 +6,9 @@ const log = require("../structs/log.js");
 
 const app = express.Router();
 
-app.post("/api/launcher/login", async (req, res) => {
-    const { email, password } = req.body;
+// Api for launcher login (If u want a POST requesto just replace "app.get" to "app.post" and "req.query" to "req.body")
+app.get("/api/launcher/login", async (req, res) => {
+    const { email, password } = req.query;
 
     if (!email) return res.status(400).send('The email was not entered.');
     if (!password) return res.status(400).send('The password was not entered.');
