@@ -48,6 +48,8 @@ const config = {
   bEnableCrossBans: bool('ENABLE_CROSS_BANS', false),
 
   port: num('PORT', 3551),
+  xmppPort: num('XMPP_PORT', 80),
+  xmppPortHTTPS: num('XMPP_PORT_HTTPS', 443),
 
   Api: {
     bApiKey: str('API_KEY', 'ur-api-key'),
