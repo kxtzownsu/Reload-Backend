@@ -1,10 +1,11 @@
-const { Client, GatewayIntentBits, Partials, MessageEmbed } = require("discord.js");
+const { Client, GatewayIntentBits, Partials, EmbedBuilder, Colors, ActivityType } = require("discord.js");
 const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.GuildMembers, GatewayIntentBits.GuildBans] });
 const fs = require("fs");
 const path = require("path");
 const config = require('../Config/config.js');
 const log = require("../structs/log.js");
 const Users = require("../model/user.js");
+const functions = require("../structs/functions.js");
 
 client.once("clientReady", () => {
     log.bot("Bot is up and running!");
@@ -17,10 +18,10 @@ client.once("clientReady", () => {
             if (!channel) {
                 log.error(`Cannot find the channel with ID ${config.bBackendStatusChannelId}`);
             } else {
-                const embed = new MessageEmbed()
+                const embed = new EmbedBuilder()
                     .setTitle("Backend Online")
                     .setDescription("Reload Backend is now online")
-                    .setColor("GREEN")
+                    .setColor(Colors.Green)
                     .setThumbnail("https://i.imgur.com/2RImwlb.png")
                     .setFooter({
                         text: "Reload Backend",
@@ -38,7 +39,7 @@ client.once("clientReady", () => {
     if (config.discord.bEnableInGamePlayerCount) {
         function updateBotStatus() {
             if (global.Clients && Array.isArray(global.Clients)) {
-                client.user.setActivity(`${global.Clients.length} player(s)`, { type: "WATCHING" });
+                client.user.setActivity(`${global.Clients.length} player(s)`, { type: ActivityType.Watching });
             }
         }
 
@@ -64,7 +65,7 @@ client.once("clientReady", () => {
 });
 
 client.on("interactionCreate", async interaction => {
-    if (!interaction.isApplicationCommand()) return;
+    if (!interaction.isChatInputCommand()) return;
 
     const executeCommand = (dir, commandName) => {
         const commandPath = path.join(dir, commandName + ".js");

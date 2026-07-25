@@ -1,5 +1,5 @@
 const MMCodes = require("../../../model/mmcodes.js");
-const { MessageEmbed } = require("discord.js");
+const { EmbedBuilder, Colors } = require("discord.js");
 const log = require("../../../structs/log.js");
 const config = require('../../../Config/config.js')
 
@@ -62,10 +62,10 @@ module.exports = {
             });
             await newCode.save();
 
-            const embed = new MessageEmbed()
+            const embed = new EmbedBuilder()
                 .setTitle("Successfully Created Custom Game Code!")
                 .setDescription("Your code has been created. You can now use it to host custom games.")
-                .setColor("GREEN")
+                .setColor(Colors.Green)
                 .addFields([
                     {
                         name: "Code",
